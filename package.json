@@ -1,0 +1,33 @@
+{
+  "name": "weave-crdt",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A CRDT engine for real-time collaborative editing.",
+  "type": "module",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @weave/core",
+    "test": "npm test -w @weave/core",
+    "test:all": "npm test -w @weave/core && npm test -w @weave/server",
+    "bench": "npm run bench -w @weave/bench",
+    "bench:quick": "npm run bench:quick -w @weave/bench",
+    "server": "npm run dev -w @weave/server",
+    "editor": "npm run dev -w @weave/editor",
+    "dev": "concurrently -n server,editor -c cyan,magenta \"npm run server\" \"npm run editor\"",
+    "typecheck": "tsc --noEmit -p packages/core/tsconfig.json",
+    "assets": "tsx scripts/gen-anomaly-svg.ts"
+  },
+  "devDependencies": {
+    "@automerge/automerge": "^3.4.1",
+    "@types/node": "^22.20.1",
+    "concurrently": "^9.2.4",
+    "fast-check": "^4.9.0",
+    "playwright": "^1.62.1",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.9",
+    "yjs": "^13.6.32"
+  }
+}

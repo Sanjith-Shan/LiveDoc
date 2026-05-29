@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+bench/results/*.json
+!bench/results/.gitkeep
+.vite/
+
+# capture scratch
+packages/editor/.capture/
