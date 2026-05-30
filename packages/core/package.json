@@ -1,0 +1,22 @@
+{
+  "name": "@weave/core",
+  "version": "0.1.0",
+  "description": "A CRDT engine for real-time collaborative editing: Fugue sequence CRDT, tombstone GC, rich text, undo under concurrency.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "fast-check": "^4.9.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
+  }
+}
