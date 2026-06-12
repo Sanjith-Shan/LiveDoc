@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  core:
+    name: core — types, tests, property tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build -w @weave/core
+      - run: npx tsc --noEmit -p packages/core/tsconfig.json
+      - name: Test
+        run: npm test -w @weave/core
+
+  server:
+    name: server — relay tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build -w @weave/core
+      - run: npx tsc --noEmit -p packages/server/tsconfig.json
+      - run: npm test -w @weave/server
+
+  editor:
+    name: editor — typecheck and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build -w @weave/core
+      - run: npx tsc --noEmit -p packages/editor/tsconfig.json
+      - run: npm run build -w @weave/editor
+
+  bench:
+    name: bench — smoke run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build -w @weave/core
+      - run: npx tsc --noEmit -p packages/bench/tsconfig.json
+      # Quick mode only: CI runners are noisy, so this proves the harness runs.
+      # Published numbers come from a labelled machine, never from CI.
+      - run: npm run bench:quick
