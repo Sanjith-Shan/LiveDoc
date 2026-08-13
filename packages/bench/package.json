@@ -1,0 +1,22 @@
+{
+  "name": "@weave/bench",
+  "version": "0.1.0",
+  "description": "Benchmark harness comparing @weave/core against Yjs and Automerge.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "bench": "tsx src/run.ts",
+    "bench:quick": "tsx src/run.ts --quick",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@weave/core": "*",
+    "yjs": "^13.6.32",
+    "@automerge/automerge": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
+  }
+}
