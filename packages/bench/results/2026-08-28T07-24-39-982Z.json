@@ -1,0 +1,730 @@
+{
+  "generatedAt": "2026-08-28T07:24:39.982Z",
+  "systemInfo": {
+    "cpu": "Apple M3 Pro",
+    "arch": "arm64",
+    "node": "v24.2.0",
+    "yjsVersion": "13.6.32",
+    "automergeVersion": "3.4.1",
+    "date": "2026-08-28T07:20:15.294Z"
+  },
+  "args": {
+    "quick": false,
+    "seed": 42,
+    "only": null
+  },
+  "outcomes": [
+    {
+      "id": "local-edit-throughput",
+      "title": "1. Local-edit throughput (sequential append)",
+      "status": "ok",
+      "data": {
+        "sizes": [
+          1000,
+          10000,
+          100000,
+          200000
+        ],
+        "rows": [
+          {
+            "size": 1000,
+            "perSubject": {
+              "weave": {
+                "opsPerSec": 235823.52759453634,
+                "nsPerOp": 4240.459
+              },
+              "yjs": {
+                "opsPerSec": 140701.3964613599,
+                "nsPerOp": 7107.25
+              },
+              "automerge": {
+                "opsPerSec": 14767.55862720775,
+                "nsPerOp": 67716
+              }
+            }
+          },
+          {
+            "size": 10000,
+            "perSubject": {
+              "weave": {
+                "opsPerSec": 549616.6423919316,
+                "nsPerOp": 1819.45
+              },
+              "yjs": {
+                "opsPerSec": 445471.50374474487,
+                "nsPerOp": 2244.8125
+              },
+              "automerge": {
+                "opsPerSec": 30854.769684571693,
+                "nsPerOp": 32409.9
+              }
+            }
+          },
+          {
+            "size": 100000,
+            "perSubject": {
+              "weave": {
+                "opsPerSec": 889494.0769389962,
+                "nsPerOp": 1124.23458
+              },
+              "yjs": {
+                "opsPerSec": 559101.9704151192,
+                "nsPerOp": 1788.5825
+              },
+              "automerge": {
+                "opsPerSec": 35757.58005997114,
+                "nsPerOp": 27966.09833
+              }
+            }
+          },
+          {
+            "size": 200000,
+            "perSubject": {
+              "weave": {
+                "opsPerSec": 935371.3009929297,
+                "nsPerOp": 1069.094165
+              },
+              "yjs": {
+                "opsPerSec": 561379.4777907754,
+                "nsPerOp": 1781.32625
+              },
+              "automerge": {
+                "opsPerSec": 35184.29917481493,
+                "nsPerOp": 28421.76833
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "random-position-insert",
+      "title": "2. Random-position insert (adversarial)",
+      "status": "ok",
+      "data": {
+        "sizes": [
+          1000,
+          10000,
+          100000,
+          200000
+        ],
+        "rows": [
+          {
+            "size": 1000,
+            "perSubject": {
+              "weave": {
+                "opsPerSec": 408260.41462111194,
+                "nsPerOp": 2449.417
+              },
+              "yjs": {
+                "opsPerSec": 188881.20562118024,
+                "nsPerOp": 5294.333
+              },
+              "automerge": {
+                "opsPerSec": 28675.754242592175,
+                "nsPerOp": 34872.666
+              }
+            },
+            "weaveMaxDepth": 21
+          },
+          {
+            "size": 10000,
+            "perSubject": {
+              "weave": {
+                "opsPerSec": 547354.0930509622,
+                "nsPerOp": 1826.9709
+              },
+              "yjs": {
+                "opsPerSec": 345847.7416384564,
+                "nsPerOp": 2891.4458
+              },
+              "automerge": {
+                "opsPerSec": 28605.046284295026,
+                "nsPerOp": 34958.8667
+              }
+            },
+            "weaveMaxDepth": 31
+          },
+          {
+            "size": 100000,
+            "perSubject": {
+              "weave": {
+                "opsPerSec": 341733.3766669481,
+                "nsPerOp": 2926.25792
+              },
+              "yjs": {
+                "opsPerSec": 136392.1082162265,
+                "nsPerOp": 7331.8025
+              },
+              "automerge": {
+                "opsPerSec": 23335.371969767042,
+                "nsPerOp": 42853.39874999999
+              }
+            },
+            "weaveMaxDepth": 42
+          },
+          {
+            "size": 200000,
+            "perSubject": {
+              "weave": {
+                "opsPerSec": 246128.91791411192,
+                "nsPerOp": 4062.911455
+              },
+              "yjs": {
+                "opsPerSec": 50840.819776443386,
+                "nsPerOp": 19669.234375
+              },
+              "automerge": {
+                "opsPerSec": 19027.954939217183,
+                "nsPerOp": 52554.25521
+              }
+            },
+            "weaveMaxDepth": 43
+          }
+        ]
+      }
+    },
+    {
+      "id": "merge-latency",
+      "title": "3. Merge latency",
+      "status": "ok",
+      "data": {
+        "nFixed": 10000,
+        "mFixed": 200,
+        "repeats": 5,
+        "byDocSize": [
+          {
+            "n": 1000,
+            "perSubject": {
+              "weave": 0.11774119999999999,
+              "yjs": 0.14964999999999998,
+              "automerge": 3.2748918
+            }
+          },
+          {
+            "n": 10000,
+            "perSubject": {
+              "weave": 0.0597834,
+              "yjs": 0.0685172,
+              "automerge": 4.8223666000000005
+            }
+          },
+          {
+            "n": 100000,
+            "perSubject": {
+              "weave": 0.0700584,
+              "yjs": 0.0699418,
+              "automerge": 30.3150748
+            }
+          },
+          {
+            "n": 200000,
+            "perSubject": {
+              "weave": 0.1184414,
+              "yjs": 0.07483340000000001,
+              "automerge": 61.2276664
+            }
+          }
+        ],
+        "byConcurrentOps": [
+          {
+            "m": 10,
+            "perSubject": {
+              "weave": 0.0849916,
+              "yjs": 0.052966599999999996,
+              "automerge": 3.2114002
+            }
+          },
+          {
+            "m": 100,
+            "perSubject": {
+              "weave": 0.0384252,
+              "yjs": 0.04845,
+              "automerge": 3.6701665999999995
+            }
+          },
+          {
+            "m": 1000,
+            "perSubject": {
+              "weave": 0.0869834,
+              "yjs": 0.0508498,
+              "automerge": 9.4902998
+            }
+          },
+          {
+            "m": 10000,
+            "perSubject": {
+              "weave": 0.08499159999999999,
+              "yjs": 0.048866599999999996,
+              "automerge": 68.7689916
+            }
+          }
+        ],
+        "byReplicaCount": [
+          {
+            "r": 2,
+            "perSubject": {
+              "weave": 0.0455752,
+              "yjs": 0.032266800000000005,
+              "automerge": 0.3454002
+            }
+          },
+          {
+            "r": 4,
+            "perSubject": {
+              "weave": 0.0296166,
+              "yjs": 0.030833199999999998,
+              "automerge": 0.6903418
+            }
+          },
+          {
+            "r": 8,
+            "perSubject": {
+              "weave": 0.0392252,
+              "yjs": 0.059499800000000005,
+              "automerge": 1.4844833999999998
+            }
+          },
+          {
+            "r": 16,
+            "perSubject": {
+              "weave": 0.0705334,
+              "yjs": 0.09456679999999999,
+              "automerge": 3.5582332
+            }
+          },
+          {
+            "r": 32,
+            "perSubject": {
+              "weave": 0.117125,
+              "yjs": 0.21745019999999998,
+              "automerge": 9.0443918
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "memory",
+      "title": "4. Memory (bytes retained per operation)",
+      "status": "ok",
+      "data": {
+        "sizes": [
+          1000,
+          10000,
+          100000,
+          200000
+        ],
+        "rows": [
+          {
+            "size": 1000,
+            "perSubject": {
+              "weave": {
+                "heapBytesPerOp": 0,
+                "statsBytesPerOp": 2.12
+              },
+              "yjs": {
+                "heapBytesPerOp": 0,
+                "statsBytesPerOp": null
+              },
+              "automerge": {
+                "heapBytesPerOp": 4.472,
+                "statsBytesPerOp": null
+              }
+            }
+          },
+          {
+            "size": 10000,
+            "perSubject": {
+              "weave": {
+                "heapBytesPerOp": 29.6088,
+                "statsBytesPerOp": 2.012
+              },
+              "yjs": {
+                "heapBytesPerOp": 28.1024,
+                "statsBytesPerOp": null
+              },
+              "automerge": {
+                "heapBytesPerOp": 29.9888,
+                "statsBytesPerOp": null
+              }
+            }
+          },
+          {
+            "size": 100000,
+            "perSubject": {
+              "weave": {
+                "heapBytesPerOp": 31.52472,
+                "statsBytesPerOp": 2.0012
+              },
+              "yjs": {
+                "heapBytesPerOp": 32.2192,
+                "statsBytesPerOp": null
+              },
+              "automerge": {
+                "heapBytesPerOp": 32.13512,
+                "statsBytesPerOp": null
+              }
+            }
+          },
+          {
+            "size": 200000,
+            "perSubject": {
+              "weave": {
+                "heapBytesPerOp": 31.82712,
+                "statsBytesPerOp": 2.0006
+              },
+              "yjs": {
+                "heapBytesPerOp": 32.04132,
+                "statsBytesPerOp": null
+              },
+              "automerge": {
+                "heapBytesPerOp": 32.07476,
+                "statsBytesPerOp": null
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "tombstone-gc",
+      "title": "5. Tombstone GC (Weave only)",
+      "status": "ok",
+      "data": {
+        "size": 50000
+      }
+    },
+    {
+      "id": "cold-start",
+      "title": "6. Cold start / offline sync",
+      "status": "ok",
+      "data": {
+        "sizes": [
+          1000,
+          10000,
+          100000
+        ],
+        "rows": [
+          {
+            "n": 1000,
+            "perSubject": {
+              "weave": {
+                "ms": 0.076625,
+                "bytes": 1021
+              },
+              "yjs": {
+                "ms": 0.098208,
+                "bytes": 1018
+              },
+              "automerge": {
+                "ms": 6.528667,
+                "bytes": 99726
+              }
+            }
+          },
+          {
+            "n": 10000,
+            "perSubject": {
+              "weave": {
+                "ms": 0.054333,
+                "bytes": 10021
+              },
+              "yjs": {
+                "ms": 0.026875,
+                "bytes": 10018
+              },
+              "automerge": {
+                "ms": 77.740833,
+                "bytes": 1001535
+              }
+            }
+          },
+          {
+            "n": 100000,
+            "perSubject": {
+              "weave": {
+                "ms": 0.241666,
+                "bytes": 100023
+              },
+              "yjs": {
+                "ms": 0.112542,
+                "bytes": 100019
+              },
+              "automerge": {
+                "ms": 655.971667,
+                "bytes": 10258770
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "wire-size",
+      "title": "7. Wire size (10k-char realistic typing session)",
+      "status": "ok",
+      "data": {
+        "targetOps": 10000,
+        "updateRows": [
+          {
+            "subject": {
+              "id": "weave",
+              "label": "Weave",
+              "version": "workspace (packages/core)"
+            },
+            "opsApplied": 9516,
+            "totalBytes": 226890,
+            "bytesPerOp": 23.843001261034047
+          },
+          {
+            "subject": {
+              "id": "yjs",
+              "label": "Yjs",
+              "version": "13.6.32"
+            },
+            "opsApplied": 9516,
+            "totalBytes": 239344,
+            "bytesPerOp": 25.151744430432956
+          },
+          {
+            "subject": {
+              "id": "automerge",
+              "label": "Automerge",
+              "version": "3.4.1"
+            },
+            "opsApplied": 9516,
+            "totalBytes": 957353,
+            "bytesPerOp": 100.60456073980664
+          }
+        ],
+        "svDiffRows": [
+          {
+            "subject": {
+              "id": "weave",
+              "label": "Weave",
+              "version": "workspace (packages/core)"
+            },
+            "opsApplied": 9516,
+            "totalBytes": 226890,
+            "bytesPerOp": 23.843001261034047
+          },
+          {
+            "subject": {
+              "id": "yjs",
+              "label": "Yjs",
+              "version": "13.6.32"
+            },
+            "opsApplied": 9516,
+            "totalBytes": 13388229,
+            "bytesPerOp": 1406.9177175283733
+          },
+          {
+            "subject": {
+              "id": "automerge",
+              "label": "Automerge",
+              "version": "3.4.1"
+            },
+            "opsApplied": 9516,
+            "totalBytes": 957353,
+            "bytesPerOp": 100.60456073980664
+          }
+        ]
+      }
+    },
+    {
+      "id": "degradation-point",
+      "title": "8. Degradation point (mean insert latency > 1ms)",
+      "status": "ok",
+      "data": {
+        "sizes": [
+          1000,
+          2000,
+          4000,
+          8000,
+          16000,
+          32000,
+          64000,
+          128000,
+          256000,
+          512000
+        ],
+        "samplesPerCheckpoint": 30,
+        "discardFraction": 0.2,
+        "warmupChars": 2000,
+        "statsBySubjectAndSize": {
+          "weave": {
+            "1000": {
+              "mean": 0.002012125000000001,
+              "median": 0.00175,
+              "p99": 0.006208
+            },
+            "2000": {
+              "mean": 0.0021683750000000006,
+              "median": 0.001916,
+              "p99": 0.009125
+            },
+            "4000": {
+              "mean": 0.0022691250000000007,
+              "median": 0.002041,
+              "p99": 0.007334
+            },
+            "8000": {
+              "mean": 0.0023020833333333344,
+              "median": 0.002209,
+              "p99": 0.005417
+            },
+            "16000": {
+              "mean": 0.003253541666666667,
+              "median": 0.003084,
+              "p99": 0.007333
+            },
+            "32000": {
+              "mean": 0.0027551250000000006,
+              "median": 0.002792,
+              "p99": 0.003458
+            },
+            "64000": {
+              "mean": 0.004958416666666667,
+              "median": 0.005083,
+              "p99": 0.006625
+            },
+            "128000": {
+              "mean": 0.005661416666666668,
+              "median": 0.00525,
+              "p99": 0.010959
+            },
+            "256000": {
+              "mean": 0.008571208333333333,
+              "median": 0.007,
+              "p99": 0.040583
+            },
+            "512000": {
+              "mean": 0.009659791666666665,
+              "median": 0.010042,
+              "p99": 0.014333
+            }
+          },
+          "yjs": {
+            "1000": {
+              "mean": 0.0026215416666666674,
+              "median": 0.002583,
+              "p99": 0.003292
+            },
+            "2000": {
+              "mean": 0.002664958333333334,
+              "median": 0.002583,
+              "p99": 0.003792
+            },
+            "4000": {
+              "mean": 0.003418458333333334,
+              "median": 0.002917,
+              "p99": 0.014166
+            },
+            "8000": {
+              "mean": 0.003137125000000001,
+              "median": 0.003,
+              "p99": 0.004167
+            },
+            "16000": {
+              "mean": 0.003954875000000001,
+              "median": 0.00375,
+              "p99": 0.005792
+            },
+            "32000": {
+              "mean": 0.004769125000000002,
+              "median": 0.004167,
+              "p99": 0.010458
+            },
+            "64000": {
+              "mean": 0.007586833333333334,
+              "median": 0.007083,
+              "p99": 0.015792
+            },
+            "128000": {
+              "mean": 0.061378541666666675,
+              "median": 0.056167,
+              "p99": 0.163416
+            },
+            "256000": {
+              "mean": 0.20801570833333335,
+              "median": 0.18675,
+              "p99": 0.659292
+            },
+            "512000": {
+              "mean": 0.3076336666666667,
+              "median": 0.278,
+              "p99": 0.959333
+            }
+          },
+          "automerge": {
+            "1000": {
+              "mean": 0.03453645833333333,
+              "median": 0.034,
+              "p99": 0.046959
+            },
+            "2000": {
+              "mean": 0.0381735,
+              "median": 0.038166,
+              "p99": 0.048125
+            },
+            "4000": {
+              "mean": 0.033725625,
+              "median": 0.033875,
+              "p99": 0.037208
+            },
+            "8000": {
+              "mean": 0.03594445833333333,
+              "median": 0.036083,
+              "p99": 0.038542
+            },
+            "16000": {
+              "mean": 0.03637841666666667,
+              "median": 0.036041,
+              "p99": 0.042416
+            },
+            "32000": {
+              "mean": 0.04846699999999999,
+              "median": 0.039833,
+              "p99": 0.25025
+            },
+            "64000": {
+              "mean": 0.038854083333333324,
+              "median": 0.039084,
+              "p99": 0.046708
+            },
+            "128000": {
+              "mean": 0.06313008333333334,
+              "median": 0.045666,
+              "p99": 0.194209
+            },
+            "256000": {
+              "mean": 0.22337845833333334,
+              "median": 0.161916,
+              "p99": 0.619875
+            },
+            "512000": {
+              "mean": 0.10716662500000002,
+              "median": 0.104417,
+              "p99": 0.128875
+            }
+          }
+        },
+        "degradationPoint": {
+          "weave": {
+            "size": null,
+            "meanMs": null
+          },
+          "yjs": {
+            "size": null,
+            "meanMs": null
+          },
+          "automerge": {
+            "size": null,
+            "meanMs": null
+          }
+        }
+      }
+    }
+  ]
+}
