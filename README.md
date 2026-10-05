@@ -1,4 +1,4 @@
-# Weave
+# LiveDoc
 
 **A CRDT engine for real-time collaborative editing.** Two people type at the
 same position at the same time, neither waits for the network, and both end up
@@ -15,9 +15,6 @@ with the same document — with the text each of them actually wrote.
 off entirely — edits stacking up with nowhere to go — and the merge when the
 connection comes back. Recorded from the running app, not staged.</em></p>
 
-> *In the causal-tree literature the* **weave** *is the in-order traversal that
-> turns the tree of concurrent edits back into a line of text. That traversal is
-> the whole problem this project is about, so it seemed like the right name.*
 
 **If you only read three things:** [the anomaly this
 avoids](#the-question-this-project-answers) · [how convergence is
@@ -169,7 +166,7 @@ they are worth writing this way.
 answer is *forced*: one replica editing, or replicas that always sync before
 editing again. Under genuine concurrency, Yjs and Fugue may legitimately order
 two independent runs differently, and asserting equality there would be
-asserting that Weave is Yjs. The concurrent tests assert what is actually
+asserting that LiveDoc is Yjs. The concurrent tests assert what is actually
 forced — the same multiset of characters with no deletes in play, the same
 length with them, and internal convergence in both libraries.
 
@@ -181,8 +178,8 @@ length with them, and internal convergence in both libraries.
 
 Every number below comes from one run, committed in full at
 [`packages/bench/results/latest.md`](packages/bench/results/latest.md)
-alongside the raw JSON. Ratios are printed as **Weave / Yjs**, so a number
-above 1.0 always means Weave is worse.
+alongside the raw JSON. Ratios are printed as **LiveDoc / Yjs**, so a number
+above 1.0 always means LiveDoc is worse.
 
 **Losing to Yjs is expected.** It is years of specialist optimisation by people
 who do this full time. Parity on memory and wire size, and the same order of
@@ -194,7 +191,7 @@ The workload is random-position inserts — nothing can be cached, so the index
 structure is doing real work. Median of 30 sampled inserts at each checkpoint,
 after a warm-up pass, with the first 20% of samples discarded.
 
-| Document size | Weave | Yjs | Automerge |
+| Document size | LiveDoc | Yjs | Automerge |
 | --- | --- | --- | --- |
 | 1,000 | 0.0018 ms | 0.0026 ms | 0.034 ms |
 | 16,000 | 0.0031 ms | 0.0038 ms | 0.036 ms |
@@ -206,19 +203,19 @@ of them has a "degradation point" on this machine at this scale — that is the
 honest answer to *where does it fall over*, and it is not the answer I expected
 to be able to give.
 
-Weave's curve flattens because it descends a tree with subtree-size counters,
+LiveDoc's curve flattens because it descends a tree with subtree-size counters,
 while Yjs walks a linked list from a cached position — a known characteristic
 of Yjs on random-access workloads, not something anyone missed. Tree depth is
 43 at 200,000 characters.
 
-**How much faster, honestly.** Across repeated runs on this machine, Weave
+**How much faster, honestly.** Across repeated runs on this machine, LiveDoc
 lands at 0.010–0.017 ms at 512,000 characters and Yjs at 0.173–0.278 ms. That
 is somewhere between 10× and 28× depending on the run. **The ordering and the
 widening gap are stable across every measurement; the multiple is not**, so
 this reports the range rather than picking the flattering end of it.
 
 **And one measurement was thrown away entirely.** The *throughput* form of this
-same workload swung between 3.7× and 13.4× across seeds, with Weave's own
+same workload swung between 3.7× and 13.4× across seeds, with LiveDoc's own
 absolute figure moving by a factor of twenty. No speedup number from it is
 reported at all.
 
@@ -229,7 +226,7 @@ session — the per-transaction update a provider emits, not a state-vector diff
 
 | | bytes/op | ratio |
 | --- | --- | --- |
-| Weave | 23.84 | 0.95× |
+| LiveDoc | 23.84 | 0.95× |
 | Yjs | 25.15 | baseline |
 | Automerge | 100.6 | — |
 
@@ -250,7 +247,7 @@ being flattered by an unrealistically small id.
 
 Applying a 200-operation concurrent batch into a document of a given size:
 
-| Document size | Weave | Yjs | Automerge | ratio |
+| Document size | LiveDoc | Yjs | Automerge | ratio |
 | --- | --- | --- | --- | --- |
 | 1,000 | 0.118 ms | 0.150 ms | 3.28 ms | 0.79× |
 | 10,000 | 0.060 ms | 0.069 ms | 4.82 ms | 0.87× |
